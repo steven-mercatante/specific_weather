@@ -5,7 +5,3 @@ An intermediary API to fetch specific bits of weather information for a
 particular zip code.
 
 Currently uses the Weather Underground API as the source of data. 
-
-### Usage:
-1. Create a `conf` module that contains an `API_KEY` constant.
-2. Profit!
