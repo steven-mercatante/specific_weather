@@ -9,6 +9,10 @@ import requests
 
 app = Flask(__name__)
 
+@app.route('/', methods=['GET'])
+def index():
+	return 'Hello'
+
 @app.route('/sunrise/<int:zip_code>', methods=['GET'])
 def sunrise(zip_code):
 	if len(str(zip_code)) != 5:
