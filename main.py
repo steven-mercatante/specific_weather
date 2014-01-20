@@ -1,7 +1,6 @@
 import os
 import json
 # --
-# import conf
 import errors
 # --
 from flask import Flask
@@ -10,15 +9,18 @@ import requests
 
 app = Flask(__name__)
 
+api_key = os.environ.get('API_KEY')
+
 @app.route('/', methods=['GET'])
 def index():
-	return 'Hello', os.environ['API_KEY']
+	return 'Hello'
+	# return 'Hello ---', api_key
 
 # @app.route('/sunrise/<int:zip_code>', methods=['GET'])
 # def sunrise(zip_code):
 # 	if len(str(zip_code)) != 5:
 # 		return jsonify({'error': errors.INVALID_ZIP_CODE.format(zip_code )})
-# 	endpoint = 'http://api.wunderground.com/api/{0}/astronomy/q/{1}.json'.format(conf.API_KEY, zip_code)
+# 	endpoint = 'http://api.wunderground.com/api/{0}/astronomy/q/{1}.json'.format(os.environ['API_KEY'], zip_code)
 # 	r = requests.get(endpoint)
 # 	json_content = json.loads(r.content)
 
@@ -38,7 +40,7 @@ def index():
 # def conditions(zip_code):
 # 	if len(str(zip_code)) != 5:
 # 		return jsonify({'error': errors.INVALID_ZIP_CODE.format(zip_code )})
-# 	endpoint = 'http://api.wunderground.com/api/{0}/conditions/q/CA/{1}.json'.format(conf.API_KEY, zip_code)
+# 	endpoint = 'http://api.wunderground.com/api/{0}/conditions/q/CA/{1}.json'.format(os.environ['API_KEY'], zip_code)
 # 	r = requests.get(endpoint)
 # 	json_content = json.loads(r.content)
 
