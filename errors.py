@@ -1,0 +1,1 @@
+INVALID_ZIP_CODE = 'Invalid zip code: {0}'

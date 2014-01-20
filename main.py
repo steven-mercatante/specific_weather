@@ -1,6 +1,7 @@
 import json
 # --
 import conf
+import errors
 # --
 from flask import Flask
 from flask import jsonify
@@ -11,7 +12,7 @@ app = Flask(__name__)
 @app.route('/sunrise/<int:zip_code>', methods=['GET'])
 def sunrise(zip_code):
 	if len(str(zip_code)) != 5:
-		return jsonify({'error': 'Invalid zip code: {0}'.format(zip_code )})
+		return jsonify({'error': errors.INVALID_ZIP_CODE.format(zip_code )})
 	endpoint = 'http://api.wunderground.com/api/{0}/astronomy/q/{1}.json'.format(conf.API_KEY, zip_code)
 	r = requests.get(endpoint)
 	json_content = json.loads(r.content)
@@ -31,7 +32,7 @@ def sunrise(zip_code):
 @app.route('/conditions/<int:zip_code>', methods=['GET'])
 def conditions(zip_code):
 	if len(str(zip_code)) != 5:
-		return jsonify({'error': 'Invalid zip code: {0}'.format(zip_code )})
+		return jsonify({'error': errors.INVALID_ZIP_CODE.format(zip_code )})
 	endpoint = 'http://api.wunderground.com/api/{0}/conditions/q/CA/{1}.json'.format(conf.API_KEY, zip_code)
 	r = requests.get(endpoint)
 	json_content = json.loads(r.content)
