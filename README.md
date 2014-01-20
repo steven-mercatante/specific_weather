@@ -6,4 +6,6 @@ particular zip code.
 
 Currently uses the Weather Underground API as the source of data. 
 
-Create a `conf.py` file with an `API_KEY` constant.
+### Usage:
+1. Create a `conf` module that contains an `API_KEY` constant.
+2. Profit!
